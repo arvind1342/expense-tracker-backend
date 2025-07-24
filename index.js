@@ -7,6 +7,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// ✅ Add this root route
+app.get('/', (req, res) => {
+  res.send('✅ Expense Tracker Backend is Live!');
+});
+
 // MySQL connection
 const db = mysql.createConnection(process.env.DATABASE_URL);
 
@@ -17,8 +22,6 @@ db.connect(err => {
   }
   console.log("✅ Connected to database!");
 });
-
-// ROUTES
 
 // Get all expenses
 app.get('/expenses', (req, res) => {
@@ -51,6 +54,8 @@ app.delete('/expenses/:id', (req, res) => {
 });
 
 // Start server
-app.listen(3001, () => {
-  console.log("Server running on http://localhost:3001");
+const PORT = process.env.PORT || 3001; // ✅ Use dynamic port for Render
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
