@@ -8,16 +8,14 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MySQL connection
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',        // Change if needed
-  password: 'arvind@2003',        // Your MySQL password here
-  database: 'expense_tracker'
-});
+const db = mysql.createConnection(process.env.DATABASE_URL);
 
 db.connect(err => {
-  if (err) throw err;
-  console.log("MySQL Connected...");
+  if (err) {
+    console.error("❌ Database connection failed:", err.stack);
+    return;
+  }
+  console.log("✅ Connected to database!");
 });
 
 // ROUTES
