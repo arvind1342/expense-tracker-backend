@@ -4,7 +4,13 @@ const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["http://localhost:3000"], // ✅ allow your frontend origin
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }
+));
 app.use(bodyParser.json());
 
 // ✅ Add this root route
