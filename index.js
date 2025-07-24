@@ -53,6 +53,6 @@ app.delete('/expenses/:id', (req, res) => {
 });
 
 // Start server
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+app.listen(3001, () => {
+  console.log("Server running on http://localhost:3001");
 });
