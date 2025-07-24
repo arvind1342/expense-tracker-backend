@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(cors(
   {
-    origin: ["http://localhost:3000"], // ✅ allow your frontend origin
+    origin: ["http://localhost:3000","https://comfy-pie-5226e4.netlify.app"], // ✅ allow your frontend origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }
